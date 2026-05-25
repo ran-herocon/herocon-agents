@@ -17,7 +17,11 @@ Initialize counters:
 
 For each Active row:
 
-a. WebFetch the company's website (the Website URL). Extract the hero copy: the main H1 headline plus the subheadline or first value-proposition sentence shown above the fold.
+a. Run a WebSearch with query `site:<domain>` where `<domain>` is the company's Website URL stripped of `https://`, `http://`, and `www.` (e.g., for `https://www.paces.com` use `site:paces.com`).
+   - Take the FIRST search result that matches the company's own domain.
+   - Extract: the result title + the result snippet. Combine as `"<title> — <snippet>"`.
+   - This is the "hero copy" for this company.
+   - If WebSearch returns no results for this company's domain: treat as a failure, skip this row, note the error for end-of-run report.
 
 b. Compare the extracted hero copy to the value in the `Homepage Snapshot` field for this row.
 
@@ -42,8 +46,6 @@ b. Compare the extracted hero copy to the value in the `Homepage Snapshot` field
      ```
    - Update `Homepage Snapshot` to the new copy.
    - Increment messaging_shifts.
-
-c. If the WebFetch fails (site down, timeout): skip this row. Note the error for the error report at the end.
 
 ---
 
@@ -90,7 +92,7 @@ b. Find `last_daily_run`: among those same rows, take the most recent `date:Firs
 
 Post exactly this message - fill in the actual numbers:
 ```
-📊 *Weekly PMM digest · week of <YYYY-MM-DD>*
+📊 **Weekly PMM digest · week of <YYYY-MM-DD>**
 • <new_this_week> new competitors logged  ·  <messaging_shifts> messaging shifts  ·  <stealth_launched> stealth -> launched  ·  <new_articles> new articles
 • Last daily run: <last_daily_run>
 -> Notion: https://www.notion.so/edc7cceaf5f1417bae081e1919543ab3
@@ -103,7 +105,7 @@ Post exactly this message - fill in the actual numbers:
 **Never send a DM on a successful run.** DMs go to Ran only when errors occurred.
 
 If any step fails:
-1. Per-row failures (WebFetch timeout, Notion update error): skip that row, note the error, continue.
+1. Per-row failures (WebSearch returns nothing, Notion update error): skip that row, note the error, continue.
 2. Catastrophic failures (cannot read Notion, cannot post to Slack): exit and DM Ran.
 3. After completing the full run: if any errors occurred, DM Ran.
 
@@ -113,12 +115,12 @@ To DM Ran:
 
 Error DM format:
 ```
-⚠️ *PMM agent error*
-*Routine:* pmm-weekly
-*Time:* <UTC time> · <Asia/Jerusalem time>
-*Failing step:* <exact step - e.g., "WebFetch on acme.io" or "Notion update for UpCodes">
-*Context:* <company name being processed when failure occurred>
-*Error:* <verbatim error message>
-*Action taken:* <"skipped this row and continued" or "exited early - N rows not processed">
-*Run log:* <link if available, else omit>
+⚠️ **PMM agent error**
+**Routine:** pmm-weekly
+**Time:** <UTC time> · <Asia/Jerusalem time>
+**Failing step:** <exact step - e.g., "WebSearch on paces.com" or "Notion update for UpCodes">
+**Context:** <company name being processed when failure occurred>
+**Error:** <verbatim error message>
+**Action taken:** <"skipped this row and continued" or "exited early - N rows not processed">
+**Run log:** <link if available, else omit>
 ```

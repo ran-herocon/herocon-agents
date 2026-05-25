@@ -139,43 +139,43 @@ Post one message per candidate.
 
 **If `customer_overlap = true`**, use the ALERT format:
 ```
-🚨🚨 CUSTOMER OVERLAP ALERT 🚨🚨
+**🚨🚨 CUSTOMER OVERLAP ALERT 🚨🚨**
 <Company Name> is already working with one of our design partners.
 
 🔗  <website>   [or if no website:]   ⚠️ STEALTH - no website · LinkedIn: <linkedin url if found>
 
-*What they do:* <one_liner>
+**What they do:** <one_liner>
 
-*Overlap:* <overlap>
+**Overlap:** <overlap>
 
-*Customer overlap:* <which design partner(s)>
+**Customer overlap:** <which design partner(s)>
 
-*Stage:* <stage · $<funding_m>M>   [or: Unknown]
+**Stage:** <stage · $<funding_m>M>   [or: Unknown]
 
-*So what for us:* <so_what>
+**So what for us:** <so_what>
 
-*Sources:* <source url 1> | <source url 2>
+**Sources:** <source url 1> | <source url 2>
 ```
 
 **For all other candidates**, use the standard card:
 ```
-🚨 <Company Name>  |  <bucket emoji(s)> <bucket(s)>
+**🚨 <Company Name>  |  <bucket emoji(s)> <bucket(s)>**
 
 🔗  <website>   [or if no website:]   ⚠️ STEALTH - no website · LinkedIn: <linkedin url if found>
 
-*What they do:* <one_liner>
+**What they do:** <one_liner>
 
-*Overlap:* <overlap>
+**Overlap:** <overlap>
 
-*Stage:* <stage · $<funding_m>M>   [or: Unknown if no data]
+**Stage:** <stage · $<funding_m>M>   [or: Unknown if no data]
 
-*Founders:* <founders - omit this line entirely if null>
+**Founders:** <founders - omit this line entirely if null>
 
-*Customers / Partnerships:* <customers and/or partnerships - omit this line entirely if both null>
+**Customers / Partnerships:** <customers and/or partnerships - omit this line entirely if both null>
 
-*So what for us:* <so_what>
+**So what for us:** <so_what>
 
-*Sources:* <source url 1> | <source url 2>
+**Sources:** <source url 1> | <source url 2>
 ```
 
 Bucket emojis: Code Compliance = ✅  |  Permitting = 🏗️  |  BIM-authoring = ✏️  |  Site Selection = 📍  |  Data Centers = 🔌  |  Other ConTech = 🔧
@@ -202,12 +202,12 @@ To DM Ran:
 
 Error DM format:
 ```
-⚠️ *PMM agent error*
-*Routine:* pmm-discovery
-*Time:* <UTC time> · <Asia/Jerusalem time>
-*Failing step:* <exact step - e.g., "Notion insert for Acme AI" or "Slack post for BuildBot">
-*Context:* <company name being processed when failure occurred>
-*Error:* <verbatim error message>
-*Action taken:* <"skipped this candidate and continued" or "exited run early - remaining candidates not processed">
-*Run log:* <link if available, else omit>
+⚠️ **PMM agent error**
+**Routine:** pmm-discovery
+**Time:** <UTC time> · <Asia/Jerusalem time>
+**Failing step:** <exact step - e.g., "Notion insert for Acme AI" or "Slack post for BuildBot">
+**Context:** <company name being processed when failure occurred>
+**Error:** <verbatim error message>
+**Action taken:** <"skipped this candidate and continued" or "exited run early - remaining candidates not processed">
+**Run log:** <link if available, else omit>
 ```
